@@ -6,7 +6,7 @@
 
 \title{\Huge Solutions to ggplot2 Exercises \\ \vspace{5mm} \normalsize Based on {\itshape R Graphics Cookbook} by Winston Chang}
 \author{Colonel Smoothie}
-\date{22.13.2013}
+\date{27.12.2013}
 \maketitle
 
 \chapter{R Basics}
