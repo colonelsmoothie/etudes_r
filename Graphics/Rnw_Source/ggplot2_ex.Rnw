@@ -1,0 +1,76 @@
+\documentclass{book}
+\usepackage{parskip}
+
+
+\begin{document}
+
+\title{\Huge ggplot2 Exercises \\ \vspace{5mm} \normalsize Based on {\itshape R Graphics Cookbook} by Winston Chang}
+\author{Colonel Smoothie}
+\date{22.13.2013}
+\maketitle
+
+\chapter{R Basics}
+
+There's not really much to add for this chapter. Move on to the next one.
+
+\chapter{Quickly Exploring Data}
+
+\begin{enumerate}
+  \item Produce the following plot with the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages:
+  
+  <<fig=TRUE, echo=FALSE>>=
+    plot(mtcars$wt, mtcars$mpg)
+  @
+  
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt mtcars} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      qplot(mtcars$wt, mtcars$mpg)
+    @
+  
+  \newpage
+  
+  \item Produce the following plot with the {\texttt pressure} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      plot(pressure$temperature, pressure$pressure, type = "l")
+    @
+  
+  \newpage
+  
+  \item Produce the following plot. It's the same as the prior plot, but with points added:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      plot(pressure$temperature, pressure$pressure, type = "l")
+      points(pressure$temperature, pressure$pressure)
+    @
+  
+  \newpage
+  
+  \item Produce the follwing plot. This is the same as the prior plot, but with another line with points added and coloured red:
+    
+    <<fig=TRUE, echo=FALSE>>=
+      plot(pressure$temperature, pressure$pressure, type = "l")
+      points(pressure$temperature, pressure$pressure)
+  
+      lines(pressure$temperature, pressure$pressure/2, col="red")
+      points(pressure$temperature, pressure$pressure/2, col="red")
+    @
+  
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt pressure} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      qplot(pressure$temperature, pressure$pressure, geom="line")
+    @
+  
+  \newpage
+  
+\end{enumerate}
+
+\end{document}
