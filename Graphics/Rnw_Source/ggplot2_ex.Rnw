@@ -213,7 +213,124 @@ There's not really much to add for this chapter. Move on to the next one.
     @
     
   \newpage
- 
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE, message=FALSE>>=
+      library(ggplot2)
+      qplot(mtcars$cyl)
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      qplot(factor(mtcars$cyl))
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt BOD} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      qplot(Time, demand, data=BOD, geom="bar", stat="identity")
+    @
+    
+    <<eval=FALSE, echo=FALSE>>=
+      #Alternate Solution
+      library(ggplot2)
+      ggplot(BOD, aes(x=Time, y=demand)) + geom_bar(stat="identity")
+    @
+  
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      qplot(factor(cyl), data=mtcars)
+    @
+    
+    <<eval=FALSE, echo=FALSE>>=
+      #Alternate Solution
+      library(ggplot2)
+      ggplot(mtcars, aes(x=factor(cyl))) + geom_bar()
+    @
+    
+  \newpage
+  
+  \item Produce the following plot using the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      hist(mtcars$mpg)
+    @
+  
+  \newpage
+  
+  \item Produce the following plot using the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages. This time, use 10 bins in the plot:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      hist(mtcars$mpg, breaks=10)
+    @
+  
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE, message=FALSE>>=
+      library(ggplot2)
+      qplot(mtcars$mpg)
+    @
+  
+  \newpage
+  
+  \item Load the {texttt ggplot2} package and produce the following plot with the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE, message=FALSE>>=
+      library(ggplot2)
+      qplot(mpg, data=mtcars, binwidth=4)
+    @
+    
+    <<eval=FALSE, echo=FALSE>>=
+      #Alternate Solution
+      library(ggplot2)
+      ggplot(mtcars, aes(x=mpg)) + geom_histogram(binwidth=4)
+    @
+    
+  \newpage
+  
+  \item Produce the follwing plot with the {\texttt ToothGrowth} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      plot(ToothGrowth$supp, ToothGrowth$len)
+    @
+    
+    <<eval=FALSE, echo=FALSE>>=
+      #Alternate Solution
+      boxplot(len ~ supp, data = ToothGrowth)
+    @
+    
+  \newpage
+  
+  \item Produce the following plot with the {\texttt ToothGrowth} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      boxplot(len ~ supp + dose, data = ToothGrowth)
+    @
+  
+  \newpage
+  
+  \item Load the {\texttt ggplot2 package} and produce the following plot with the {\texttt ToothGrowth} dataset. It's built into R so you do not need to load any packages:
+    
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      qplot(ToothGrowth$supp, ToothGrowth$len, geom="boxplot")
+    @
+    
+  \newpage
 \end{enumerate}
 
 \end{document}
