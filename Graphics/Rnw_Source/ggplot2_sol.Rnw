@@ -287,7 +287,7 @@ There's not really much to add for this chapter. Move on to the next one.
   
   \newpage
   
-  \item Load the {texttt ggplot2} package and produce the following plot with the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages:
+  \item Load the {texttt ggplot2} package and produce the following plot with the {\texttt mtcars} dataset. It's built into R so you do not need to load any packages. Set the width of the bins to 4:
   
     <<fig=TRUE, echo=TRUE, message=FALSE>>=
       library(ggplot2)
@@ -328,6 +328,66 @@ There's not really much to add for this chapter. Move on to the next one.
     <<fig=TRUE, echo=TRUE>>=
       library(ggplot2)
       qplot(ToothGrowth$supp, ToothGrowth$len, geom="boxplot")
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2 package} and produce the following plot with the {\texttt ToothGrowth} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
+      qplot(supp, len, data=ToothGrowth, geom="boxplot")
+    @
+    
+    <<eval=FALSE, echo=TRUE>>=
+      #Alternative Solution
+      library(ggplot2)
+      ggplot(ToothGrowth, aes(x=supp, y=len)) + geom_boxplot()
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2 package} and produce the following plot with the {\texttt ToothGrowth} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=TRUE, tidy=FALSE>>=
+      library(ggplot2)
+      qplot(interaction(ToothGrowth$supp, ToothGrowth$dose), ToothGrowth$len,
+geom="boxplot")
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2 package} and produce the following plot with the {\texttt ToothGrowth} dataset. It's built into R so you do not need to load any packages:
+  
+    <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
+      qplot(interaction(supp, dose), len, data=ToothGrowth, geom="boxplot")
+    @
+    
+    <<eval=FALSE, echo=TRUE>>=
+      #Alternative Solution
+      library(ggplot2)
+      ggplot(ToothGrowth, aes(x=interaction(supp, dose), y=len)) + geom_boxplot()
+    @
+    
+  \newpage
+  
+  \item Plot the function $x^3-5x$ on the range $[-4,4]$:
+    
+    <<fig=TRUE,echo=TRUE>>=
+      curve(x^3-5*x, from=-4, to=4)
+    @
+    
+  \newpage
+  
+  \item Plot the curves $1/(1+\mathrm{e}^{-x+10})$ and $1-1/(1+\mathrm{e}^{-x+10})$ as shown below:
+  
+    <<fig=TRUE, echo=TRUE>>=
+      myfun <- function(xvar) {
+        1/(1 + exp(-xvar + 10))
+        }
+      curve(myfun(x), from=0, to=20)
+      curve(1-myfun(x), add = TRUE, col = "red")
     @
     
   \newpage
