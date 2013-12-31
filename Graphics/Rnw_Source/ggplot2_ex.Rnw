@@ -391,6 +391,31 @@ geom="boxplot")
     @
     
   \newpage
+  
+  \item Run the following code below:
+  
+    <<>>=
+      myfun <- function(xvar) {
+        1/(1 + exp(-xvar + 10))
+        }
+    @
+    
+  This represents the function $f(x)=1/(1+\mathrm{e}^{-x+10})$. Load the {\texttt ggplot2} package and plot the function on the range $[0,10]$:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      qplot(c(0,20), fun=myfun, stat="function", geom="line")
+    @
+    
+    <<eval=FALSE, echo=TRUE, tidy=FALSE>>=
+      #Alternative solution
+      ggplot(data.frame(x=c(0, 20)), aes(x=x)) +
+        stat_function(fun=myfun, geom="line")
+    @
+    
+  \newpage
+  
 \end{enumerate}
+
+\chapter{Bar Graphs}
 
 \end{document}
