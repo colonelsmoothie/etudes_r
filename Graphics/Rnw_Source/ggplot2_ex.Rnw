@@ -1,4 +1,4 @@
-\documentclass{book}
+\documentclass[oneside]{book}
 \usepackage{parskip}
 
 
@@ -8,6 +8,20 @@
 \author{Colonel Smoothie}
 \date{27.12.2013}
 \maketitle
+
+\chapter*{Introduction}
+
+Just leaving some notes here. I've been having some trouble with the tidy so I'm explicitly setting the option here:
+
+<<>>=
+opts_chunk$set(tidy=FALSE)
+@
+
+{\bfseries Things to do}
+
+I don't want this to be too similar to Chang's book or else there's not really much point in making this document, other than having it in question format so you can use active recall to test yourself. For the most part, I'll be creating exercises using the {\texttt MASS} package in addition to what's already in the book, they will be tailored to match the chapters but will be slightly different so you'll have something new.
+
+I've also added a Miscellanous chapter for features of ggplot2 that are not covered in the textbook as well as an Actuarial Graphics chapter that includes actuarial applications of ggplot2.
 
 \chapter{R Basics}
 
@@ -417,5 +431,49 @@ geom="boxplot")
 \end{enumerate}
 
 \chapter{Bar Graphs}
+
+\newpage
+
+\begin{enumerate}
+
+  \item Load the {\texttt ggplot2} package and produce the following plot with the BOD (automatically loaded with R) dataset:
+    
+    <<fig=TRUE, echo=FALSE>>=
+      ggplot(BOD, aes(x=Time, y=demand)) + geom_bar(stat="identity")
+      @
+      
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the BOD (automatically loaded with R) dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      ggplot(BOD, aes(x=factor(Time), y=demand)) + geom_bar(stat="identity")
+    @
+    
+  \newpage
+    
+  \item Load the {\texttt ggplot2} package and produce the following plot with the BOD (automatically loaded with R) dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      ggplot(BOD,aes(x=Time, y=demand)) + 
+        geom_bar(stat="identity",fill="pink",colour="black")
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the BOD (automatically loaded with R) dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      ggplot(BOD,aes(x=Time, y=demand)) + 
+        geom_bar(stat="identity",fill="lightblue",colour="red")
+    @
+    
+  \newpage
+      
+\end{enumerate}
+
+\chapter{Miscellaneous}
+
+\chapter{Actuarial Graphics}
 
 \end{document}
