@@ -428,6 +428,22 @@ geom="boxplot")
     
   \newpage
   
+  \item Produce the following graph using the {\texttt biopsy} dataset from the {\texttt MASS} package:
+  
+    <<fig=TRUE, echo=TRUE>>=
+      library(MASS)
+      barplot(table(biopsy$V1),xlab="V1",ylab="Count",col="lavender")
+    @
+    
+  \newpage
+  
+  \item Produce the follwing graph using the {\texttt Boston} dataset from the {\texttt MASS} package:
+  
+    <<fig=TRUE, echo=TRUE>>=
+      library(MASS)
+      hist(Boston$age,breaks=8,col="orange")
+    @
+  
 \end{enumerate}
 
 \chapter{Bar Graphs}
