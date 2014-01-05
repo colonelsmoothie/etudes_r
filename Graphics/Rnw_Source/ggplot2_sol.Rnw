@@ -14,7 +14,7 @@
 Just leaving some notes here. I've been having some trouble with the tidy so I'm explicitly setting the option here:
 
 <<>>=
-opts_chunk$set(tidy=FALSE)
+opts_chunk$set(tidy=FALSE, message=FALSE)
 @
 
 {\bfseries Things to do}
@@ -417,11 +417,13 @@ geom="boxplot")
   This represents the function $f(x)=1/(1+\mathrm{e}^{-x+10})$. Load the {\texttt ggplot2} package and plot the function on the range $[0,10]$:
   
     <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
       qplot(c(0,20), fun=myfun, stat="function", geom="line")
     @
     
     <<eval=FALSE, echo=TRUE, tidy=FALSE>>=
       #Alternative solution
+      library(ggplot2)
       ggplot(data.frame(x=c(0, 20)), aes(x=x)) +
         stat_function(fun=myfun, geom="line")
     @
@@ -443,8 +445,24 @@ geom="boxplot")
       library(MASS)
       hist(Boston$age,breaks=8,col="orange")
     @
+    
+  \newpage
   
+  \item Produce the following graph using the {\texttt coop} dataset from the {\texttt MASS} package:
+  
+    <<fig=TRUE, echo=TRUE>>=
+      library(MASS)
+      hist(coop$Conc,col="deepskyblue",
+        main="Concentration of Analyte in g/kg")
+    @
+    
 \end{enumerate}
+
+
+%%%%% BEGIN CHAPTER 3 HERE %%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Bar Graphs}
 
@@ -455,6 +473,7 @@ geom="boxplot")
   \item Load the {\texttt ggplot2} package and produce the following plot with the BOD (automatically loaded with R) dataset:
     
     <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
       ggplot(BOD, aes(x=Time, y=demand)) + geom_bar(stat="identity")
       @
       
@@ -463,6 +482,7 @@ geom="boxplot")
   \item Load the {\texttt ggplot2} package and produce the following plot with the BOD (automatically loaded with R) dataset:
   
     <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
       ggplot(BOD, aes(x=factor(Time), y=demand)) + geom_bar(stat="identity")
     @
     
@@ -471,6 +491,7 @@ geom="boxplot")
   \item Load the {\texttt ggplot2} package and produce the following plot with the BOD (automatically loaded with R) dataset:
   
     <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
       ggplot(BOD,aes(x=Time, y=demand)) + 
         geom_bar(stat="identity",fill="pink",colour="black")
     @
@@ -480,13 +501,39 @@ geom="boxplot")
   \item Load the {\texttt ggplot2} package and produce the following plot with the BOD (automatically loaded with R) dataset:
   
     <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
       ggplot(BOD,aes(x=Time, y=demand)) + 
         geom_bar(stat="identity",fill="lightblue",colour="red")
     @
     
   \newpage
+  
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+    
+    <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
+      library(gcookbook)
+      ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) +
+        geom_bar(position="dodge")
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+  
+    <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
+      library(gcookbook)
+      ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar))+
+        geom_bar(position="dodge", colour="black") +
+        scale_fill_brewer(palette="Pastel1")
+    @
+    
+  \newpage
       
 \end{enumerate}
+
+%%%%% BEGIN MISCELLANEOUS CHAPTER HERE %%%%%
 
 \chapter{Miscellaneous}
 
@@ -509,6 +556,9 @@ geom="boxplot")
     @
     
 \end{enumerate}
+
+
+%%%%% BEGIN ACTUARIAL CHAPTER HERE %%%%%
 
 \chapter{Actuarial Graphics}
 
