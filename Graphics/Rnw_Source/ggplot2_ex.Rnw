@@ -1,5 +1,6 @@
 \documentclass[oneside]{book}
 \usepackage{parskip}
+\usepackage{hyperref}
 
 
 \begin{document}
@@ -22,6 +23,8 @@ opts_chunk$set(tidy=FALSE, message=FALSE)
 I don't want this to be too similar to Chang's book or else there's not really much point in making this document, other than having it in question format so you can use active recall to test yourself. For the most part, I'll be creating exercises using the {\texttt MASS} package in addition to what's already in the book, they will be tailored to match the chapters but will be slightly different so you'll have something new.
 
 I've also added a Miscellanous chapter for features of ggplot2 that are not covered in the textbook as well as an Actuarial Graphics chapter that includes actuarial applications of ggplot2.
+
+\tableofcontents
 
 \chapter{R Basics}
 
@@ -172,6 +175,13 @@ There's not really much to add for this chapter. Move on to the next one.
     <<fig=TRUE, echo=FALSE>>=
       library(MASS)
       barplot(Animals$brain, names.arg=row.names(Animals), las=2)
+    @
+    
+    <<eval=FALSE, echo=FALSE>>=
+      # Alternative solution provided by smwentum
+      library(MASS)
+      barplot(Animals$brain,names.arg=as.character(rownames(Animals))
+              ,las =2,cex.names = .7)
     @
     
   \newpage
@@ -430,6 +440,8 @@ geom="boxplot")
     
   \newpage
   
+%%%%% CHAPTER 2 ADDITIONAL PROBLEMS HERE %%%%%
+  
   \item Produce the following graph using the {\texttt biopsy} dataset from the {\texttt MASS} package:
   
     <<fig=TRUE, echo=FALSE>>=
@@ -454,6 +466,19 @@ geom="boxplot")
       library(MASS)
       hist(coop$Conc,col="deepskyblue",
         main="Concentration of Analyte in g/kg")
+    @
+    
+  \newpage
+    
+  \item Produce the following graph using the {\texttt cpus} dataset from the {\texttt MASS} package:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(MASS)
+
+      plot(factor(cpus$cach), cpus$perf, las=2, 
+        main="CPU Performance by Cache Size",
+        xlab="Cache Size (kilobytes)", 
+        ylab="Performance Relative to IBM 370/158-3")
     @
     
 \end{enumerate}
@@ -530,6 +555,42 @@ geom="boxplot")
     @
     
   \newpage
+  
+  \item Load the {texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      library(gcookbook)
+      ce <- cabbage_exp
+      ce[6,3:6] <- c(NA, NA, NA, NA)
+
+      ggplot(ce, aes(x=Date, y=Weight, fill=Cultivar)) +
+      geom_bar(stat="identity", position="dodge", colour="black",na.rm=TRUE) +
+      scale_fill_brewer(palette="Pastel1")
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the folowing plot with the {\texttt diamonds} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      ggplot(diamonds,aes(x=cut))+geom_bar()
+    @
+  
+  \newpage
+  
+%%%%% ADDITIONAL PROBLEMS HERE %%%%%
+
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      library(gcookbook)
+      ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar))+
+        geom_bar(position="dodge", colour="black") +
+        scale_fill_brewer(palette="Pastel2")
+    @
       
 \end{enumerate}
 
