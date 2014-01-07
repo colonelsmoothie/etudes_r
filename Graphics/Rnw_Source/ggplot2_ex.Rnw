@@ -15,7 +15,7 @@
 Just leaving some notes here. I've been having some trouble with the tidy so I'm explicitly setting the option here:
 
 <<>>=
-opts_chunk$set(tidy=FALSE, message=FALSE)
+opts_chunk$set(tidy=FALSE, message=FALSE, warning=FALSE)
 @
 
 {\bfseries Things to do}
@@ -481,6 +481,30 @@ geom="boxplot")
         ylab="Performance Relative to IBM 370/158-3")
     @
     
+  \newpage
+    
+  \item Load the {\texttt MASS} package and produce the following plot with the {\texttt crabs} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(MASS)
+      hist(crabs$RW,col="seagreen2", 
+        main="Rear Width Measurement\n of Leptograpsus Crabs",
+        prob=TRUE,
+        xlab="RW",breaks=10)
+    @
+  
+  \newpage
+    
+  \item Load the {\texttt ggplot2} and {\texttt MASS} packages and produce the following plot with the {\texttt crabs} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      library(MASS)
+      ggplot(crabs,aes(x=RW)) + 
+        geom_histogram(colour="black",fill="steelblue1")
+    @
+  
+    
 \end{enumerate}
 
 
@@ -571,13 +595,60 @@ geom="boxplot")
     
   \newpage
   
-  \item Load the {\texttt ggplot2} package and produce the folowing plot with the {\texttt diamonds} dataset:
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt diamonds} dataset:
   
     <<fig=TRUE, echo=FALSE>>=
       library(ggplot2)
       ggplot(diamonds,aes(x=cut))+geom_bar()
     @
   
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt diamonds} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      ggplot(diamonds, aes(x=carat)) + geom_bar()
+    @
+    
+    <<eval=FALSE, echo=FALSE>>=
+      # Alternative Solution
+      library(ggplot2)
+      ggplot(diamonds, aes(x=carat)) + geom_histogram()
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt upc} dataset (Run the following code first):
+  
+    <<echo=TRUE, results=FALSE>>=
+      library(gcookbook)
+      upc <- subset(uspopchange, rank(Change)>40)
+    @
+    
+    <<fig=TRUE, echo=FALSE>>=
+      ggplot(upc, aes(x=Abb, y=Change, fill=Region)) + geom_bar(stat="identity")
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt upc} dataset (Run the following code first):
+  
+    <<echo=TRUE, results=FALSE>>=
+      library(gcookbook)
+      upc <- subset(uspopchange, rank(Change)>40)
+    @
+    
+    <<fig=TRUE, echo=FALSE>>=
+      ggplot(upc, aes(x=reorder(Abb, Change), y=Change, fill=Region)) +
+        geom_bar(stat="identity", colour="black") +
+        scale_fill_manual(values=c("#669933", "#FFCC66")) +
+        xlab("State")
+    @
+    
+  \newpage
+  
+    
   \newpage
   
 %%%%% ADDITIONAL PROBLEMS HERE %%%%%
