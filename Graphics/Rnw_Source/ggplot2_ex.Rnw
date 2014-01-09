@@ -504,6 +504,20 @@ geom="boxplot")
         geom_histogram(colour="black",fill="steelblue1")
     @
   
+  \newpage
+  
+  \item Load the {\texttt ggplot2} and {\texttt Mass} packages and produce the following plot with the {\texttt forbes} dataset:
+  
+    <<fig=TRUE,echo=FALSE>>=
+      library(ggplot2)
+      library(MASS)
+      plot(pres ~ bp,data=forbes, main = "Boiling Points in the Alps", 
+        xlab="Boiling point", 
+        ylab="Barometric Pressure")
+    @
+    
+    
+
     
 \end{enumerate}
 
