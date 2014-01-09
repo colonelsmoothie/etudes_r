@@ -1,1 +1,1 @@
-rm -r *.log *.tex *.synctex.gz .Rhistory figure; mv ggplot2_ex.pdf ../Docs ; mv ggplot2_sol.pdf ../Docs
+rm -r *.log *.tex *.synctex.gz .Rhistory *.toc figure; mv ggplot2_ex.pdf ../Docs ; mv ggplot2_sol.pdf ../Docs
