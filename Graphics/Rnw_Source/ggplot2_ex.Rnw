@@ -516,8 +516,17 @@ geom="boxplot")
         ylab="Barometric Pressure")
     @
     
-    
-
+  \newpage
+  
+  \item Load the {\texttt ggplot2} package and produce the following plot with the {\texttt GAGurine} dataset:
+  
+  <<fig=TRUE, echo=FALSE>>=
+    library(ggplot2)
+    library(MASS)
+    ggplot(GAGurine,aes(x=Age,y=GAG))+geom_point()
+  @
+  
+  
     
 \end{enumerate}
 
