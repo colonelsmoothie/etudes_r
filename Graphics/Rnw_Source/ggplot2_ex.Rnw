@@ -655,7 +655,7 @@ geom="boxplot")
     
   \newpage
   
-  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt upc} dataset (run the following code first):
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt upc} dataset (run the following code first and use fill colours \#669933 and \#FFCC66):
   
     <<echo=TRUE, results=FALSE>>=
       library(ggplot2)
@@ -688,6 +688,25 @@ geom="boxplot")
     
   \newpage
   
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt csub} dataset (run the following code first and use fill colours \#CCEEFF and \#FFDDDD):
+  
+    <<echo=TRUE, results=FALSE>>=
+      library(ggplot2)
+      library(gcookbook) # For the data set
+      csub <- subset(climate, Source=="Berkeley" & Year >= 1900)
+      csub$pos <- csub$Anomaly10y >= 0
+    @
+    
+    <<fig=TRUE, echo=FALSE>>=
+      ggplot(csub, aes(x=Year, y=Anomaly10y, fill=pos)) +
+      geom_bar(stat="identity", position="identity", 
+               colour="black", size=0.25) +
+      scale_fill_manual(values=c("#CCEEFF", 
+                                 "#FFDDDD"), guide=FALSE)
+    @
+    
+  \newpage
+    
 %%%%% ADDITIONAL PROBLEMS HERE %%%%%
 
   \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
