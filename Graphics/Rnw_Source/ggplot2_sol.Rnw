@@ -771,6 +771,27 @@ geom="boxplot")
     @
     
   \newpage
+  
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+  
+    <<fig=TRUE, echo=TRUE>>=
+      ggplot(cabbage_exp,aes(x=Date, y=Weight, fill=Cultivar)) +
+        geom_bar(stat="identity") + 
+        guides(fill=guide_legend(reverse=TRUE))
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2, plyr} and {\texttt gcookbook} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+  
+    <<fig=TRUE, echo=TRUE>>=
+      library(plyr)
+      ggplot(cabbage_exp, aes(x=Date, y=Weight, 
+                        fill=Cultivar, order=desc(Cultivar))) +
+      geom_bar(stat="identity")
+    @
+    
+  \newpage
     
 %%%%% ADDITIONAL PROBLEMS HERE %%%%%
 
