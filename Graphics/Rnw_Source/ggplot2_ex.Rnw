@@ -853,7 +853,8 @@ geom="boxplot")
       library(ggplot2)
       library(gcookbook)
 
-      ggplot(cabbage_exp,aes(x=interaction(Date,Cultivar),y=Weight)) + 
+      ggplot(cabbage_exp,aes(x=interaction(Date,Cultivar),
+                             y=Weight)) + 
         geom_bar(stat="identity") +
         geom_text(aes(label=Weight), vjust=1.5, colour="white")
 
@@ -867,10 +868,64 @@ geom="boxplot")
       library(ggplot2)
       library(gcookbook)
 
-      ggplot(cabbage_exp, aes(x=interaction(Date, Cultivar), y=Weight)) +
+      ggplot(cabbage_exp, aes(x=interaction(Date, Cultivar), 
+                              y=Weight)) +
         geom_bar(stat="identity") +
         geom_text(aes(label=Weight), vjust= -0.2)
 
+    @
+    
+    <<eval=FALSE, echo=FALSE>>=
+      # Alternative Solutions
+      
+      # Adjust y limits to be a little higher
+      library(ggplot2)
+      library(gcookbook)
+      ggplot(cabbage_exp, aes(x=interaction(Date, Cultivar), 
+                              y=Weight)) +
+        geom_bar(stat="identity") +
+        geom_text(aes(label=Weight), vjust=-0.2) +
+        ylim(0, max(cabbage_exp$Weight) * 1.05)
+
+      # Map y positions slightly above bar top - y range of 
+      # plot will auto-adjust
+      library(ggplot2)
+      library(gcookbook)
+      ggplot(cabbage_exp, aes(x=interaction(Date, Cultivar), 
+                              y=Weight)) +
+        geom_bar(stat="identity") +
+        geom_text(aes(y=Weight+0.1, label=Weight))
+      @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      library(gcookbook)
+      ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) +
+        geom_bar(stat="identity", position="dodge") +
+        geom_text(aes(label=Weight), vjust=1.5, colour="white",
+            position=position_dodge(.9), size=3)
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2}, {\texttt gcookbook}, and {\texttt plyr} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+  
+    <<fig=TRUE, echo=FALSE>>=
+      library(ggplot2)
+      library(gcookbook)
+      library(plyr)
+      ce <- arrange(cabbage_exp, Date, Cultivar)
+
+      ce <- ddply(ce, "Date", transform, label_y=cumsum(Weight))
+
+      ggplot(ce, aes(x=Date, y=Weight, fill=Cultivar)) +
+        geom_bar(stat="identity") +
+        geom_text(aes(y=label_y, label=Weight), 
+                  vjust=1.5, colour="white")
     @
     
   \newpage
@@ -896,7 +951,7 @@ geom="boxplot")
 
 \begin{enumerate}
   
-  \item Load the package {\texttt ggplot2} and produce the following 5 charts from the {\texttt bacteria} dataset from the {\texttt MASS} package using a single loop. Be sure to remove the ID variable from your dataset:
+\item Load the package {\texttt ggplot2} and produce the following 5 charts from the {\texttt bacteria} dataset from the {\texttt MASS} package using a single loop. Be sure to remove the ID variable from your dataset:
 
     <<fig=TRUE,echo=FALSE, warning=FALSE, message=FALSE>>=
       library(ggplot2)
@@ -910,6 +965,8 @@ geom="boxplot")
       }
     @
     
+\newpage
+
 \end{enumerate}
 
 
