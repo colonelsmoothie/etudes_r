@@ -928,7 +928,52 @@ geom="boxplot")
                   vjust=1.5, colour="white")
     @
     
-  \newpage
+\newpage
+  
+\item Load the {\texttt ggplot2}, {\texttt gcookbook}, and {\texttt plyr} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+
+    <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
+      library(gcookbook)
+      library(plyr)
+
+      ce <- arrange(cabbage_exp, Date, Cultivar)
+
+      ce <- ddply(ce, "Date", transform, 
+                  label_y=cumsum(Weight)-0.5*Weight)
+
+      ggplot(ce, aes(x=Date, y=Weight, fill=Cultivar)) +
+        geom_bar(stat="identity") +
+        geom_text(aes(y=label_y, label=Weight), 
+                  colour="white")
+    @
+    
+\newpage
+  
+\item Load the {\texttt ggplot2}, {\texttt gcookbook}, and {\texttt plyr} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
+
+    <<fig=TRUE, echo=TRUE>>=
+      library(ggplot2)
+      library(gcookbook)
+      library(plyr)
+
+      ce <- arrange(cabbage_exp, Date, Cultivar)
+
+      ce <- ddply(ce, "Date", transform, 
+                  label_y=cumsum(Weight)-0.5*Weight)
+
+      ggplot(ce, aes(x=Date, y=Weight, fill=Cultivar)) +
+        geom_bar(stat="identity", colour="black") +
+        geom_text(aes(y=label_y,
+          label=paste(format(Weight, nsmall=2), "kg")),
+                  size=4) +
+        guides(fill=guide_legend(reverse=TRUE)) +
+        scale_fill_brewer(palette="Pastel1")
+    @
+    
+\newpage
+  
+
 %%%%% ADDITIONAL PROBLEMS HERE %%%%%
 
   \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt cabbage\_exp} dataset:
