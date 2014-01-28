@@ -972,6 +972,37 @@ geom="boxplot")
     @
     
 \newpage
+
+\item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt tophit} dataset (run the following code first):
+
+    <<eval=TRUE, echo=TRUE>>=
+      tophit <- tophitters2001[1:25,]
+    @
+    
+    <<fig=TRUE, echo=TRUE>>=
+      ggplot(tophit, aes(x=avg, y=name)) + geom_point()
+    @
+    
+  \newpage
+  
+  \item Load the {\texttt ggplot2} and {\texttt gcookbook} packages and produce the following plot with the {\texttt tophit} dataset (run the following code first):
+  
+    <<eval=TRUE, echo=TRUE>>=
+      tophit <- tophitters2001[1:25,]
+    @
+    
+    <<fig=TRUE, echo=TRUE>>=
+      ggplot(tophit, aes(x=avg, y=reorder(name, avg))) +
+        geom_point(size=3) +
+        # Use a larger dot
+        theme_bw() +
+        theme(panel.grid.major.x = element_blank(),
+          panel.grid.minor.x = element_blank(),
+          panel.grid.major.y = element_line(colour="grey60",
+                                linetype="dashed"))
+    @
+    
+  \newpage
   
 
 %%%%% ADDITIONAL PROBLEMS HERE %%%%%
