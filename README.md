@@ -1,7 +1,7 @@
 # Études in R
 ===
 
-A collection of exercises in the R programming language. Graphics exercises are based on R Graphics Cookbook, by Winston Chang.
+A collection of exercises in the R programming language. Graphics exercises are based on R Graphics Cookbook.
 
 ## Alternative Solutions?
 
